@@ -1,2 +1,9 @@
 # triplej
-Get the latest songs from triple j
+
+##### Get the last song played on triple j
+
+## Usage 
+
+Run the below command in your terminal. 
+
+`npm triple`
