@@ -1,6 +1,6 @@
 {
   "name": "triplej",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get the latest song from Triple J",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/etoxin/triplej#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "lodash": "^4.17.11",
     "node-fetch": "^2.3.0"
