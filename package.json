@@ -1,0 +1,28 @@
+{
+  "name": "triplej",
+  "version": "1.0.0",
+  "description": "Get the latest song from Triple J",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etoxin/triplej.git"
+  },
+  "keywords": [
+    "triplej"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etoxin/triplej/issues"
+  },
+  "homepage": "https://github.com/etoxin/triplej#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.3.0"
+  }
+}
