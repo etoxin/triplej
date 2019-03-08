@@ -6,4 +6,4 @@
 
 Run the below command in your terminal. 
 
-`npm triple`
+`npx triplej`
