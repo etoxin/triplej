@@ -14,7 +14,7 @@ let header = " Now Playing ";
 let footer = " On Triple J ";
 const line = sample([" ", "─", "=", "-=", "░", "♥ ", "■", "■ ", "😊  "]);
 
-program.version("1.0.2").parse(process.argv);
+program.version("1.0.3").parse(process.argv);
 
 const Service_PlaySearch = () => {
   return fetch(ABC_API_ENDPOINT)
