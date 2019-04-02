@@ -12,6 +12,7 @@ const flatMapDeep = require("lodash/flatMapDeep");
 const ABC_API_ENDPOINT =
   "https://music.abcradio.net.au/api/v1/plays/search.json?station=triplej";
 const SPOTIFY_URL = "https://open.spotify.com/search/results/";
+const APPLE_URL = 'https://itunes.apple.com/au/artist/search/';
 const RED = "#E03125";
 let header = " Now Playing ";
 let footer = " On Triple J ";
@@ -41,6 +42,7 @@ const line = sample(
 program
   .version("1.0.7")
   .option("-s --spotify [Spotify]", "Open song in Spotify")
+  .option("-a --apple [Apple Music]", "Open song in Apple Music")
   .parse(process.argv);
 
 const Service_PlaySearch = () => {
@@ -77,6 +79,10 @@ const Plays = async () => {
 
   if (program.spotify) {
     open(SPOTIFY_URL + escape(songString));
+  }
+
+  if (program.apple) {
+    open(APPLE_URL + encodeURIComponent(songString));
   }
 };
 
