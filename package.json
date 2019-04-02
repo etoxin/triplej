@@ -1,6 +1,6 @@
 {
   "name": "triplej",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Get the latest song from Triple J",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "lodash": "^4.17.11",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "open": "^6.0.0"
   }
 }

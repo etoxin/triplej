@@ -2,14 +2,16 @@
 
 const program = require("commander");
 const fetch = require("node-fetch");
-const isNull = require("lodash/isnull");
 const chalk = require("chalk");
+const open = require("open");
+const isNull = require("lodash/isnull");
 const pad = require("lodash/pad");
 const sample = require("lodash/sample");
 const flatMapDeep = require("lodash/flatMapDeep");
 
 const ABC_API_ENDPOINT =
   "https://music.abcradio.net.au/api/v1/plays/search.json?station=triplej";
+const SPOTIFY_URL = "https://open.spotify.com/search/results/";
 const RED = "#E03125";
 let header = " Now Playing ";
 let footer = " On Triple J ";
@@ -36,7 +38,10 @@ const line = sample(
   flatMapDeep(lineCollection, line => Array(line.rarity).fill(line.symbol))
 );
 
-program.version("1.0.6").parse(process.argv);
+program
+  .version("1.0.7")
+  .option("-s --spotify [Spotify]", "Open song in Spotify")
+  .parse(process.argv);
 
 const Service_PlaySearch = () => {
   return fetch(ABC_API_ENDPOINT)
@@ -58,7 +63,8 @@ const Plays = async () => {
   const result = songs[0];
 
   const output = `${chalk.bold(result.artist)} - ${chalk.bold(result.title)}`;
-  let padding = `${result.artist} - ${result.title}`.length;
+  const songString = `${result.artist} - ${result.title}`;
+  let padding = songString.length;
 
   padding = padding < 19 ? 19 : padding;
 
@@ -68,6 +74,10 @@ const Plays = async () => {
   console.log(chalk.hex(RED)(header));
   console.log(output);
   console.log(chalk.hex(RED)(footer));
+
+  if (program.spotify) {
+    open(SPOTIFY_URL + escape(songString));
+  }
 };
 
 Plays();

@@ -13,3 +13,13 @@ Run the below command in your terminal.
 or
 
 `npm install -g triplej` and run `triplej`
+
+
+###  Options
+
+```
+Options:
+  -V, --version           output the version number
+  -s --spotify [Spotify]  Open song in Spotify
+  -h, --help              output usage information
+```
