@@ -28,10 +28,10 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.16",
     "node-fetch": "^2.3.0",
     "open": "^6.0.0",
-    "snyk": "^1.192.4"
+    "snyk": "^1.192.5"
   },
   "snyk": true
 }
