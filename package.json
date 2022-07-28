@@ -1,6 +1,6 @@
 {
   "name": "triplej",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Get the latest song from Triple J",
   "main": "index.js",
   "scripts": {

@@ -20,3 +20,7 @@ Options:
   -a --artwork [Disable Artwork]       Disable the artwork
   -h, --help                           output usage information
 ```
+
+### Get the album artwork
+
+<img width="320" src="https://raw.githubusercontent.com/etoxin/triplej/master/screen2.png" alt="chalk">
