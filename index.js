@@ -3,11 +3,12 @@
 const program = require("commander");
 const fetch = require("node-fetch");
 const chalk = require("chalk");
-const open = require("open");
 const isNull = require("lodash/isnull");
+const get = require("lodash/get");
 const pad = require("lodash/pad");
 const sample = require("lodash/sample");
 const flatMapDeep = require("lodash/flatMapDeep");
+const asciify = require('asciify-image');
 
 let header = " Now Playing ";
 
@@ -37,7 +38,6 @@ const lineCollection = [
   { symbol: "✦", rarity: 20 },
   { symbol: "<>", rarity: 20 },
   { symbol: "░", rarity: 15 },
-  { symbol: "🎵 ", rarity: 15 },
   { symbol: " ", rarity: 10 },
   { symbol: "/\\", rarity: 10 },
   { symbol: "↯ ", rarity: 10 },
@@ -57,6 +57,7 @@ program
   .version("1.0.7")
   .option("-d --doublej [Double J]", "Get the current song being played on Double J")
   .option("-u --unearthed [Triple J Unearthed]", "Get the current song being played on Triple J Unearthed")
+  .option("-a --artwork [Disable Artwork]", "Disable the artwork")
   .parse(process.argv);
 
 const selected = program.doublej ? config.doublej
@@ -78,7 +79,8 @@ const Plays = async () => {
       title: item.recording.title,
       artist: item.recording.artists[0].name,
       release: !isNull(item.release) ? item.release.title : "",
-      time: item.played_time
+      time: item.played_time,
+      artwork: get(item, 'release.artwork[0].url'),
     };
   });
 
@@ -93,9 +95,25 @@ const Plays = async () => {
   header = pad(header, padding, line);
   footer = pad(footer, padding, line);
 
+  const imageWidth = header.length / 2;
+  const options = {
+    fit:    'box',
+    width:  imageWidth,
+    height: imageWidth
+  }
+
+  console.log(' ')
   console.log(chalk.hex(selected.color)(header));
   console.log(output);
   console.log(chalk.hex(selected.color)(footer));
+
+  if(!program.artwork && result.artwork) {
+    asciify(result.artwork, options, function (err, asciified) {
+      console.log(asciified);
+      console.log(' ')
+    });
+  }
+  console.log(' ')
 };
 
 Plays();
