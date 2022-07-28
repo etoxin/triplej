@@ -10,16 +10,12 @@ Run the below command in your terminal.
 
 `npx triplej`
 
-or
-
-`npm install -g triplej` and run `triplej`
-
-
 ###  Options
 
 ```
 Options:
-  -V, --version            output the version number
-  -d --doublej [Double J]  Get the current song being played on Double J
-  -h, --help               output usage information
+  -V, --version                        output the version number
+  -d --doublej [Double J]              Get the current song being played on Double J
+  -u --unearthed [Triple J Unearthed]  Get the current song being played on Triple J Unearthed
+  -h, --help                           output usage information
 ```

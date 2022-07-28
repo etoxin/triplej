@@ -20,6 +20,11 @@ const config = {
   doublej: {
     footer: ' On Double J ',
     api: 'https://music.abcradio.net.au/api/v1/plays/search.json?station=doublej',
+    color: '#ffffff'
+  },
+  unearthed: {
+    footer: ' On Unearthed ',
+    api: 'https://music.abcradio.net.au/api/v1/plays/search.json?station=unearthed',
     color: '#458325'
   },
 }
@@ -32,6 +37,7 @@ const lineCollection = [
   { symbol: "✦", rarity: 20 },
   { symbol: "<>", rarity: 20 },
   { symbol: "░", rarity: 15 },
+  { symbol: "🎵 ", rarity: 15 },
   { symbol: " ", rarity: 10 },
   { symbol: "/\\", rarity: 10 },
   { symbol: "↯ ", rarity: 10 },
@@ -39,6 +45,7 @@ const lineCollection = [
   { symbol: "■ ", rarity: 5 },
   { symbol: "∆ ", rarity: 5 },
   { symbol: "😊  ", rarity: 3 },
+  { symbol: "✨  ", rarity: 2 },
   { symbol: "♥ ", rarity: 1 }
 ];
 
@@ -49,9 +56,13 @@ const line = sample(
 program
   .version("1.0.7")
   .option("-d --doublej [Double J]", "Get the current song being played on Double J")
+  .option("-u --unearthed [Triple J Unearthed]", "Get the current song being played on Triple J Unearthed")
   .parse(process.argv);
 
-const selected = program.doublej ? config.doublej : config.triplej;
+const selected = program.doublej ? config.doublej
+               : program.unearthed ? config.unearthed
+               : config.triplej;
+
 let footer = selected.footer;
 
 const Service_PlaySearch = () => {
