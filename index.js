@@ -80,7 +80,7 @@ const Plays = async () => {
       artist: item.recording.artists[0].name,
       release: !isNull(item.release) ? item.release.title : "",
       time: item.played_time,
-      artwork: get(item, 'release.artwork[0].url'),
+      artwork: get(item, 'release.artwork[0].url') || get(item, 'recording.artwork[0].url'),
     };
   });
 
