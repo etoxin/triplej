@@ -17,5 +17,6 @@ Options:
   -V, --version                        output the version number
   -d --doublej [Double J]              Get the current song being played on Double J
   -u --unearthed [Triple J Unearthed]  Get the current song being played on Triple J Unearthed
+  -a --artwork [Disable Artwork]       Disable the artwork
   -h, --help                           output usage information
 ```
