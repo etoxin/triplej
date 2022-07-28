@@ -9,12 +9,20 @@ const pad = require("lodash/pad");
 const sample = require("lodash/sample");
 const flatMapDeep = require("lodash/flatMapDeep");
 
-const ABC_API_ENDPOINT =
-  "https://music.abcradio.net.au/api/v1/plays/search.json?station=triplej";
-const SPOTIFY_URL = "https://open.spotify.com/search/results/";
-const RED = "#E03125";
 let header = " Now Playing ";
-let footer = " On Triple J ";
+
+const config = {
+  triplej: {
+    footer: ' On Triple J ',
+    api: 'https://music.abcradio.net.au/api/v1/plays/search.json?station=triplej',
+    color: '#E03125'
+  },
+  doublej: {
+    footer: ' On Double J ',
+    api: 'https://music.abcradio.net.au/api/v1/plays/search.json?station=doublej',
+    color: '#458325'
+  },
+}
 
 const lineCollection = [
   { symbol: "■", rarity: 25 },
@@ -40,11 +48,14 @@ const line = sample(
 
 program
   .version("1.0.7")
-  .option("-s --spotify [Spotify]", "Open song in Spotify")
+  .option("-d --doublej [Double J]", "Get the current song being played on Double J")
   .parse(process.argv);
 
+const selected = program.doublej ? config.doublej : config.triplej;
+let footer = selected.footer;
+
 const Service_PlaySearch = () => {
-  return fetch(ABC_API_ENDPOINT)
+  return fetch(selected.api)
     .then(res => res.json())
     .catch(error => console.log("Error", error));
 };
@@ -71,13 +82,9 @@ const Plays = async () => {
   header = pad(header, padding, line);
   footer = pad(footer, padding, line);
 
-  console.log(chalk.hex(RED)(header));
+  console.log(chalk.hex(selected.color)(header));
   console.log(output);
-  console.log(chalk.hex(RED)(footer));
-
-  if (program.spotify) {
-    open(SPOTIFY_URL + escape(songString));
-  }
+  console.log(chalk.hex(selected.color)(footer));
 };
 
 Plays();

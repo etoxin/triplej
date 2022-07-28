@@ -19,7 +19,7 @@ or
 
 ```
 Options:
-  -V, --version           output the version number
-  -s --spotify [Spotify]  Open song in Spotify
-  -h, --help              output usage information
+  -V, --version            output the version number
+  -d --doublej [Double J]  Get the current song being played on Double J
+  -h, --help               output usage information
 ```
