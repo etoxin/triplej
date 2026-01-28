@@ -29,10 +29,10 @@
     "asciify-image": "^0.1.8",
     "chalk": "^2.4.2",
     "commander": "^2.19.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "node-fetch": "^2.3.0",
     "open": "^6.0.0",
-    "snyk": "^1.192.5"
+    "snyk": "^1.996.0"
   },
   "snyk": true
 }
